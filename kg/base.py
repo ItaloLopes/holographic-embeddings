@@ -229,7 +229,7 @@ class LinkPredictionEval(object):
         self.ys = ys
 
     def scores(self, mdl):
-        scores = mdl._scores(self.ss, self.ps, self.os)
+        scores = mdl.model._scores(self.ss, self.ps, self.os)
         pr, rc, _ = precision_recall_curve(self.ys, scores)
         roc = roc_auc_score(self.ys, scores)
         return auc(rc, pr), roc
